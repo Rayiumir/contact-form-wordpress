@@ -10,7 +10,6 @@ function contact_styles(){
     wp_enqueue_style(
         'contact_css',
         RAYIUM_CONTACT_CSS . 'contact.css',
-        $css_deps,
         RAYIUM_CONTACT_VERSION
     );
 
