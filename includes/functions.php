@@ -77,6 +77,7 @@ function contact_display_admin_page(){
         <table class="wp-list-table widefat fixed striped table-view-list">
             <thead>
                 <tr>
+                <th scope="col" class="manage-column column-name column-primary" width="50px;">ID</th>
                     <th scope="col" class="manage-column column-name column-primary" width="150px;">Name</th>
                     <th scope="col" class="manage-column column-email" width="150px;">Email</th>
                     <th scope="col" class="manage-column column-message">Message</th>
@@ -86,6 +87,7 @@ function contact_display_admin_page(){
             <tbody id="the-list">
                 <?php foreach ($contacts as $row) { ?>
                     <tr>
+                        <td><?php echo $row->id; ?></td>
                         <td><?php echo $row->name; ?></td>
                         <td><?php echo $row->email; ?></td>
                         <td><?php echo $row->message; ?></td>
