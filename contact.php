@@ -18,12 +18,6 @@ define( 'RAYIUM_CONTACT_VIEWS', plugin_dir_path( __FILE__ ) . 'views/' );
 define( 'RAYIUM_CONTACT_CSS', plugin_dir_url( __FILE__ ) . 'css/' );
 define( 'RAYIUM_CONTACT_JS', plugin_dir_url( __FILE__ ) . 'js/' );
 
-define( 'RAYIUM_CONTACT_VERSION', '1.0.0' );
-define(
-  'RAYIUM_CONTACT_VERSION',
-  defined( 'WP_DEBUG' ) && WP_DEBUG ? time() : RAYIUM_CONTACT_VERSION
-);
-
 // For Function contact_table
 
 register_activation_hook( __FILE__, 'contact_table' );
@@ -31,4 +25,5 @@ register_activation_hook( __FILE__, 'contact_table' );
 // Include modules
 
 require( RAYIUM_CONTACT_INCLUDES . 'functions.php' );
+require( RAYIUM_CONTACT_INCLUDES . 'enqueue.php' );
 require( RAYIUM_CONTACT_VIEWS . 'contactView.php' );
