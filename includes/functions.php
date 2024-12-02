@@ -47,3 +47,19 @@ function contact_handle_form(){
 }
 add_action( 'admin_post_contact_handle_form', 'contact_handle_form' );
 add_action( 'admin_post_nopriv_contact_handle_form', 'contact_handle_form' );
+
+// Manage Contact
+
+function contact_register_admin_page(){
+   
+    add_menu_page(
+        'Manage Contact',
+        'Manage Contact',
+        'manage_options',
+        'contact_submissions',
+        'contact_display_admin_page',
+        'dashicons-email-alt'
+    );
+}
+add_action('admin_menu', 'contact_register_admin_page');
+
