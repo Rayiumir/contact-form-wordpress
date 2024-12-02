@@ -12,23 +12,23 @@ if(!defined('ABSPATH')){
     exit;
 }
 
+define( 'RAYIUM_CONTACT_INCLUDES', plugin_dir_path( __FILE__ ) . 'includes/' );
+define( 'RAYIUM_CONTACT_VIEWS', plugin_dir_path( __FILE__ ) . 'views/' );
+
+define( 'RAYIUM_CONTACT_CSS', plugin_dir_url( __FILE__ ) . 'css/' );
+define( 'RAYIUM_CONTACT_JS', plugin_dir_url( __FILE__ ) . 'js/' );
+
+define( 'RAYIUM_CONTACT_VERSION', '1.0.0' );
+define(
+  'RAYIUM_CONTACT_VERSION',
+  defined( 'WP_DEBUG' ) && WP_DEBUG ? time() : RAYIUM_CONTACT_VERSION
+);
+
+// For Function contact_table
+
 register_activation_hook( __FILE__, 'contact_table' );
 
-function contact_table() {
+// Include modules
 
-    global $wpdb;
-
-    $tableName = $wpdb->prefix . 'contacts';
-    $charsetCollate = $wpdb->get_charset_collate();
-
-    $sql = "CREATE TABLE IF NOT EXISTS $tableName (
-        id BIGINT(20) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-        name VARCHAR(255) NOT NULL,
-        email VARCHAR(255) NOT NULL,
-        message TEXT NOT NULL,
-        created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-    ) $charsetCollate;";
-
-    require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
-    dbDelta( $sql );
-}
+require( RAYIUM_CONTACT_INCLUDES . 'functions.php' );
+require( RAYIUM_CONTACT_VIEWS . 'contactView.php' );
