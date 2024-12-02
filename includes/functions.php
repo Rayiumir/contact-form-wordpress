@@ -63,3 +63,37 @@ function contact_register_admin_page(){
 }
 add_action('admin_menu', 'contact_register_admin_page');
 
+// Contact Page
+
+function contact_display_admin_page(){
+
+    global $wpdb;
+    $tableName = $wpdb->prefix . 'contacts';
+    $contacts = $wpdb->get_results("SELECT * FROM $tableName ORDER BY created_at DESC");
+
+    ?>
+    <div class="wrap">
+        <h1 style="margin-top: 40px; margin-bottom: 20px;">Manage Contact</h1>
+        <table class="wp-list-table widefat fixed striped table-view-list">
+            <thead>
+                <tr>
+                    <th scope="col" class="manage-column column-name column-primary" width="150px;">Name</th>
+                    <th scope="col" class="manage-column column-email" width="150px;">Email</th>
+                    <th scope="col" class="manage-column column-message">Message</th>
+                    <th scope="col" class="manage-column column-created_at" width="150px;">Created At</th>
+                </tr>
+            </thead>
+            <tbody id="the-list">
+                <?php foreach ($contacts as $row) { ?>
+                    <tr>
+                        <td><?php echo $row->name; ?></td>
+                        <td><?php echo $row->email; ?></td>
+                        <td><?php echo $row->message; ?></td>
+                        <td><?php echo $row->created_at; ?></td>
+                    </tr>
+                <?php } ?>
+            </tbody>
+        </table>
+    </div>
+    <?php
+}
