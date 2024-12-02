@@ -11,6 +11,9 @@ label {
 input,
 textarea {
     width: 100%;
+    border-radius: 25px;
+    border: 0;
+    border: 1px solid #e6e6e6;
 }
 
 .form-container {
@@ -26,6 +29,10 @@ textarea {
     margin-left: 10px;
 }
 
-.form-container.flex>div:first-child {
-    margin-left: 0;
+button.button {
+    border: 0;
+    border-radius: 25px;
+    color: #fff;
+    background-color: #2f73f4;
+    padding: 10px 30px 10px 30px;
 }

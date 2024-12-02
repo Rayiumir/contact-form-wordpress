@@ -23,7 +23,7 @@ function contact_render_form() {
                 <textarea id="message" rows="10" name="message" required></textarea>
             </div>
             <input type="hidden" name="action" value="contact_handle_form">
-            <button type="submit">submit</button>
+            <button type="submit" class="button">submit</button>
         </form>
     <?php
 
