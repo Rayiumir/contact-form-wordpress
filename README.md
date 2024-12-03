@@ -9,7 +9,7 @@ with install plugin can Display the following shotcode in the WordPress template
 ```php
 <?php echo do_shortcode('[contact-form]'); ?>
 ```
-Or
+Or in Page Wordpress
 ```php
 [contact-form]
 ```
