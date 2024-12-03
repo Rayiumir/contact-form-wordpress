@@ -14,7 +14,7 @@ Or in Page Wordpress
 [contact-form]
 ```
 
-#Screenshots
+# Screenshots
 
 <table class="table">
   <thead>
