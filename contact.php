@@ -3,7 +3,7 @@
 /*
 * Plugin Name: Simple Contact
 * Description: Simple Contact Form Plugin for Wordpress
-* Version: 1.1
+* Version: 1.1.1
 * Author: Raymond Baghumian
 * Author URI: https://github.com/Rayiumir/contact-form-wordpress
 */
@@ -24,13 +24,7 @@ register_activation_hook( __FILE__, 'contact_table' );
 
 // Contact Uninstall Table
 
-function contact_uninstall_table(){
-    global $wpdb;
-    
-    $tableName = $wpdb->prefix . 'contacts';
-    $wpdb->query("DROP TABLE IF EXISTS $tableName");
-}
-register_uninstall_hook(__FILE__, 'contact_uninstall_table');
+require( RAYIUM_CONTACT_INCLUDES . 'uninstall.php' );
 
 // Include modules
 
