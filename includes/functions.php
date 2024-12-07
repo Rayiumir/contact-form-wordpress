@@ -82,16 +82,18 @@ function contact_display_admin_page(){
                     <th scope="col" class="manage-column column-email" width="150px;">Email</th>
                     <th scope="col" class="manage-column column-message">Message</th>
                     <th scope="col" class="manage-column column-created_at" width="150px;">Created At</th>
+                    <th scope="col" class="manage-column column-created_at" width="50px;">Action</th>
                 </tr>
             </thead>
             <tbody id="the-list">
                 <?php foreach ($contacts as $row) { ?>
-                    <tr>
+                    <tr id="row-<?php echo esc_attr($row->id) ?>">
                         <td><?php echo $row->id; ?></td>
                         <td><?php echo $row->name; ?></td>
                         <td><?php echo $row->email; ?></td>
                         <td><?php echo $row->message; ?></td>
                         <td><?php echo $row->created_at; ?></td>
+                        <td><button type="button" class="delete-button" data-id="<?php echo esc_attr($row->id) ?>">Delete</button></td>
                     </tr>
                 <?php } ?>
             </tbody>
@@ -99,3 +101,28 @@ function contact_display_admin_page(){
     </div>
     <?php
 }
+
+// Removing Data Contacts
+
+function handle_delete_data() {
+    global $wpdb;
+
+    if (!isset($_POST['nonce']) || !wp_verify_nonce($_POST['nonce'], 'delete_data_nonce')) {
+        wp_send_json_error('Invalid nonce');
+        wp_die();
+    }
+
+    $id = intval($_POST['id']);
+    $tableName = $wpdb->prefix . 'contacts';
+    $deleted = $wpdb->delete($tableName, ['id' => $id], ['%d']);
+
+    if ($deleted) {
+        wp_send_json_success('Row deleted successfully');
+    } else {
+        wp_send_json_error('Failed to delete row');
+    }
+
+    wp_die();
+}
+add_action('wp_ajax_delete_data', 'handle_delete_data');
+add_action('wp_ajax_nopriv_delete_data', 'handle_delete_data');

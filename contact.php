@@ -3,7 +3,7 @@
 /*
 * Plugin Name: Simple Contact
 * Description: Simple Contact Form Plugin for Wordpress
-* Version: 1.1.1
+* Version: 1.1.2
 * Author: Raymond Baghumian
 * Author URI: https://github.com/Rayiumir/contact-form-wordpress
 */
